@@ -1,0 +1,6 @@
+<h1>{{ driver.name }}</h1>
+<ul>
+{% for t in driver.task_set.all %}
+    <li>{{ t.start }} - {{ t.end }} @ {{ t.departure }}</li>
+{% endfor %}
+</ul>

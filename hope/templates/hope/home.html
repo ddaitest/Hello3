@@ -1,0 +1,9 @@
+{% if driver_list %}
+    <ul>
+    {% for driver in driver_list %}
+        <li><a href="/hope/{{ driver.id }}/">{{ driver.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}

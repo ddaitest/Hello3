@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>send Message</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="./css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <script type="text/javascript" src="./js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+</head>
+
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-3 column">
+        </div>
+        <div class="col-md-6 column">
+            <h2>
+                Publish Task
+            </h2>
+            <p>
+                用于测试发布Task.
+            </p>
+            <form role="form" action="{% url 'add_task' %}" method="post" target="_blank">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">司机ID:</span>
+                        <input type="text" class="form-control" placeholder="请输入标题" aria-describedby="basic-addon1"
+                               id="title" name="driver_id">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">起点:</span>
+                        <input type="text" class="form-control" placeholder="请输入内容" aria-describedby="basic-addon1"
+                               id="content" name="start_at">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">终点:</span>
+                        <input type="text" class="form-control" placeholder="请输入自定义信息" aria-describedby="basic-addon1"
+                               id="extra" name="end_at">
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">出发时间:</span>
+                        <input type="text" value="2012-05-15 21:05" id="datetimepicker" data-date-format="yyyy-mm-dd hh:ii" name="departure">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">座位:</span>
+                        <input type="text" class="form-control" placeholder="请输入自定义信息" aria-describedby="basic-addon1"
+                               id="extra" name="quota">
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">备注:</span>
+                        <input type="text" class="form-control" placeholder="请输入自定义信息" aria-describedby="basic-addon1"
+                               id="extra" name="remark">
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+                    <label for="content">选择消息类型</label>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="notification"/> Notification
+                        </label>
+                        <label>
+                            <input type="checkbox" name="payload"/> Payload
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" value="Vote"> 发 送</button>
+            </form>
+        </div>
+        <div class="col-md-3 column">
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('.form_datetime').datetimepicker({
+        //language:  'fr',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
+        showMeridian: 1
+    });
+    $('#datetimepicker').datetimepicker({
+        //language:  'fr',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
+        showMeridian: 1
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+<h1>Tasks</h1>
+<ul>
+{% for t in tasks %}
+    <li>{{ t.start }} - {{ t.end }} @ {{ t.departure }}</li>
+{% endfor %}
+</ul>
