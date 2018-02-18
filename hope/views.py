@@ -39,8 +39,6 @@ def publish(request):
 
 @csrf_exempt
 def add_task(request):
-    print(request)
-    print(request.POST)
     driver = Driver.objects.get(pk=1)
     driver.task_set.create(start=request.POST['start_at'], end=request.POST['end_at'],
                            departure=request.POST['departure'], quota=request.POST['quota'],
@@ -50,7 +48,6 @@ def add_task(request):
 
 @csrf_exempt
 def add_task_api(request):
-    print(request.POST)
     driver = Driver.objects.get(pk=1)
     if 'json' in request.POST.keys():
         jo = request.POST['json']
