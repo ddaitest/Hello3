@@ -38,7 +38,7 @@ def add_task(request):
     print(request)
     print(request.POST)
     driver = Driver.objects.get(pk=1)
-    driver.task_set.create(start=request.POST['start_at'].encode("utf8"), end=request.POST['end_at'].encode("utf8"),
+    driver.task_set.create(start=request.POST['start_at'], end=request.POST['end_at'],
                            departure=request.POST['departure'], quota=request.POST['quota'],
                            remarks=request.POST['remark'])
     return HttpResponse("publish  ")
