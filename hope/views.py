@@ -55,11 +55,11 @@ def add_task_api(request):
     if 'json' in request.POST.keys():
         jo = request.POST['json']
         po = json.loads(jo, encoding="utf-8")
-        driver.task_set.create(start=po.start_at,
-                               end=po.end_at,
-                               departure=datetime.datetime.fromtimestamp(int(po.departure)),
-                               quota=po.quota,
-                               remarks=po.remark)
+        driver.task_set.create(start=po['start_at'],
+                               end=po['end_at'],
+                               departure=datetime.datetime.fromtimestamp(int(po['departure'])),
+                               quota=po['quota'],
+                               remarks=po['remark'])
     else:
         driver.task_set.create(start=request.POST['start_at'],
                                end=request.POST['end_at'],
