@@ -33,16 +33,12 @@ def publish(request):
     return render(request, 'hope/publish.html')
 
 
-def test(request):
-    return HttpResponse("Test "+request.GET['test'])
-
-
 @csrf_exempt
 def add_task(request):
     print(request)
     print(request.POST)
     driver = Driver.objects.get(pk=1)
-    driver.task_set.create(start=request.POST['start_at'].encode('gb2312'), end=request.POST['end_at'].encode('gb2312'),
+    driver.task_set.create(start=request.POST['start_at'], end=request.POST['end_at'],
                            departure=request.POST['departure'], quota=request.POST['quota'],
                            remarks=request.POST['remark'])
     return HttpResponse("publish  ")
