@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-
+from datetime import datetime
 from hope.models import *
 from django.http import Http404
 from django.template import loader
@@ -42,6 +42,18 @@ def add_task(request):
                            departure=request.POST['departure'], quota=request.POST['quota'],
                            remarks=request.POST['remark'])
     return HttpResponse("publish  ")
+
+
+@csrf_exempt
+def add_task_api(request):
+    print(request)
+    print(request.POST)
+    driver = Driver.objects.get(pk=1)
+    driver.task_set.create(start=request.POST['start_at'], end=request.POST['end_at'],
+                           departure=datetime.fromtimestamp(request.POST['departure']), quota=request.POST['quota'],
+                           remarks=request.POST['remark'])
+    return HttpResponse("publish  ")
+
 
 
 def result(request):
