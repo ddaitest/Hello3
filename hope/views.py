@@ -70,4 +70,4 @@ def add_task_api(request):
 
 
 def result(request):
-    return HttpResponse("Result x")
+    return HttpResponse("Result x"+sys.getdefaultencoding())
