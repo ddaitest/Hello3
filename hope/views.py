@@ -1,11 +1,14 @@
+# coding=utf-8
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import datetime
 from hope.models import *
 from django.http import Http404
+import json
 from django.template import loader
 import sys
+
 
 # Create your views here.
 
@@ -49,13 +52,21 @@ def add_task(request):
 def add_task_api(request):
     print(request.POST)
     driver = Driver.objects.get(pk=1)
-    driver.task_set.create(start=request.POST['start_at'],
-                           end=request.POST['end_at'],
-                           departure=datetime.datetime.fromtimestamp(int(request.POST['departure'])),
-                           quota=request.POST['quota'],
-                           remarks=request.POST['remark'])
+    if 'json' in request.POST.keys():
+        jo = request.POST['json']
+        po = json.loads(jo, encoding="utf-8")
+        driver.task_set.create(start=po.start_at,
+                               end=po.end_at,
+                               departure=datetime.datetime.fromtimestamp(int(po.departure)),
+                               quota=po.quota,
+                               remarks=po.remark)
+    else:
+        driver.task_set.create(start=request.POST['start_at'],
+                               end=request.POST['end_at'],
+                               departure=datetime.datetime.fromtimestamp(int(request.POST['departure'])),
+                               quota=request.POST['quota'],
+                               remarks=request.POST['remark'])
     return HttpResponse("publish  ")
-
 
 
 def result(request):
